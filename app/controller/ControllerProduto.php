@@ -20,7 +20,7 @@ class ControllerProduto extends ControllerPadrao
        //var_dump($a);
         
         $sTitle = 'PRODUCT';
-
+fff
         $sContent = ViewProduto::render([
             'produtoContent' => "<h1>$sTitle</h1>",
             'tabelaProduto' => ViewProduto::getHtmlTabelaProduto($a)
