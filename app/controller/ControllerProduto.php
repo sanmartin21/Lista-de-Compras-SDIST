@@ -37,7 +37,6 @@ class ControllerProduto extends ControllerPadrao
 
         $oModelProduto = new ModelProduto;
         $oModelProduto->id = $iId;
-        $oModelProduto->deleteProduto();
         
 
         if($oModelProduto->deleteProduto()){

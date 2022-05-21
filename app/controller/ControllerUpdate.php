@@ -39,21 +39,21 @@ class ControllerUpdate extends ControllerPadrao
         $DescProduto = $_GET['proddescricao'];
 
         $oModelProduto = new ModelProduto;
+        $oControllerProduto = new ControllerProduto;
 
         if($oModelProduto->updateProduto($codProduto,$NomProduto,$PrecProduto,$DescProduto)){
-            $this->footerVars = [
+            $oControllerProduto->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Produto alterado com Sucesso!
               </div>
               '
             ];
         }else{
-            $this->footerVars = [
+            $oControllerProduto->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Erro! Produto não foi alterado!'
             ];
         }
-        $oControllerProduto = new ControllerProduto;
         return $oControllerProduto -> processPage();
     }
 }

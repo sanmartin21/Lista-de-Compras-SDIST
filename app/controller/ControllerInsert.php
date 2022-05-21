@@ -37,21 +37,22 @@ class ControllerInsert extends ControllerPadrao
         $DescProduto = $_GET['proddescricao'];
 
         $oModelProduto = new ModelProduto;
+        $oControllerProduto = new ControllerProduto;
 
         if($oModelProduto->insertProduto($NomProduto,$PrecProduto,$DescProduto)){
-            $this->footerVars = [
+            $oControllerProduto->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Produto Inserido com Sucesso!
               </div>
               '
             ];
         }else{
-            $this->footerVars = [
+            $oControllerProduto ->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Erro! Produto não foi inserido!'
             ];
         }
-        $oControllerProduto = new ControllerProduto;
+       
         return $oControllerProduto -> processPage();
     }
 }
