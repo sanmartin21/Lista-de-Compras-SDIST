@@ -20,7 +20,7 @@ class ViewProduto extends ViewPadrao
             <th scope="col">Preço</th>
             <th scope="col">Descrição</th>  
             <th scope="col"></th>          
-            <th scope="col"><a href="index.php?pg=insert&proid=" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">CADASTRAR!</a></th>  
+            <th scope="col"><a href="index.php?pg=insert&prodcodigo=" class="btn btn-secondary btn-lg" role="button" aria-disabled="true">CADASTRAR!</a></th>  
           </tr>
         </thead>';
 
@@ -31,7 +31,7 @@ class ViewProduto extends ViewPadrao
           <td>' . $x["prodnome"] . '</td>
           <td>' . $x["prodpreco"] . '</td>
           <td>' . $x["proddescricao"] . '</td>
-          <td><i class="fa fa-trash mr-2" aria-hidden="true"></i><a  href="index.php?pg=produtos&act=delete&prodcodigo='.$x["prodcodigo"].'" class="btn btn-secondary btn-sm" role="button" aria-disabled="true">deletar</a></td>
+          <td><i class="fa fa-trash " aria-hidden="true"></i><a  href="index.php?pg=produtos&act=delete&prodcodigo='.$x["prodcodigo"].'" class="btn btn-secondary btn-sm" role="button" aria-disabled="true">deletar</a></td>
           <td><i class="fa fa-upload" aria-hidden="true"></i><a href="index.php?pg=update&prodcodigo='.$x["prodcodigo"].'" class="btn btn-secondary btn-sm" role="button" aria-disabled="true">alterar</a></td>
         </tr>
         ';

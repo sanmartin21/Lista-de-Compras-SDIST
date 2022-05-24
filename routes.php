@@ -19,6 +19,12 @@ function render($sPage)
             break;
         case 'update':
             return (new App\Controller\ControllerUpdate)->render();
+            break;
+        case 'login':
+            return (new App\Controller\ControllerLogin)->render();
+            break;
+        case 'usuario':
+            return (new App\Controller\ControllerUsuario)->render();
     }
 
     return 'Página não encontrada!';

@@ -32,6 +32,8 @@ abstract class ModelPadrao
     
     }
 
+
+
     protected function delete($aWhere)
     {
         $oConection = Connection::get();
@@ -52,6 +54,31 @@ abstract class ModelPadrao
         $sSql = 'UPDATE '.$this ->getTable()." SET prodnome = '$NomProduto', prodpreco = '$PrecProduto', proddescricao ='$DescProduto' WHERE prodcodigo = $codProduto";
      
         return pg_query($oConection,$sSql);
+    }
+
+    protected function insertLogin($logUser,$logSenha)
+    {
+        $oConection = Connection::get();
+
+        $sSql = 'INSERT INTO '.$this ->getTable()." (userlogin, usersenha) values ('$logUser','$logSenha')";
+     
+        return pg_query($oConection,$sSql);
+    
+    }
+
+    function checkLogin($logUser, $logSenha){
+        $oConnection = Connection::get();
+
+        $sSql = 'SELECT * FROM '.$this ->getTable().' WHERE userlogin ='. "'$logUser'" . 'AND usersenha ='. "'$logSenha'";
+        $resultado = pg_query($oConnection, $sSql);
+        $logado = pg_fetch_assoc($resultado);
+
+
+        if (!$logado){
+            return false;
+        }
+
+        return true ;
     }
 
     /**
