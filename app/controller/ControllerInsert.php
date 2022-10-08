@@ -17,7 +17,6 @@ class ControllerInsert extends ControllerPadrao
         $oModelProduto = new ModelProduto;
 
         $a = $oModelProduto->getAll();
-       //var_dump($a);
         
         $sTitle = 'PRODUCT';
 
