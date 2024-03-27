@@ -6,19 +6,15 @@ use App\Controller\ControllerPadrao;
 use App\View\ViewInsert;
 use App\Model\ModelProduto;
 
-use App\Db\Connection;
-
 class ControllerInsert extends ControllerPadrao
 {
     function processPage()
     {
-        //var_dump(Connection::get());
-        
         $oModelProduto = new ModelProduto;
 
         $a = $oModelProduto->getAll();
-        
-        $sTitle = 'PRODUCT';
+
+        $sTitle = 'Lista de Compras';
 
         $sContent = ViewInsert::render([
             'IViewInsertContent' => "<h1>$sTitle</h1>",
@@ -30,28 +26,29 @@ class ControllerInsert extends ControllerPadrao
             $sContent
         );
     }
-    function processInsert(){
+    function processInsert()
+    {
         $NomProduto = $_GET['prodnome'];
         $PrecProduto = $_GET['prodpreco'];
-        $DescProduto = $_GET['proddescricao'];
+        $QuantProduto = $_GET['prodquantidade'];
 
         $oModelProduto = new ModelProduto;
         $oControllerProduto = new ControllerProduto;
 
-        if($oModelProduto->insertProduto($NomProduto,$PrecProduto,$DescProduto)){
+        if ($oModelProduto->insertProduto($NomProduto, $PrecProduto, $QuantProduto)) {
             $oControllerProduto->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Produto Inserido com Sucesso!
               </div>
               '
             ];
-        }else{
-            $oControllerProduto ->footerVars = [
+        } else {
+            $oControllerProduto->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Erro! Produto não foi inserido!'
             ];
         }
-       
-        return $oControllerProduto -> processPage();
+
+        return $oControllerProduto->processPage();
     }
 }

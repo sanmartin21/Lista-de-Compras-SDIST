@@ -19,37 +19,18 @@ abstract class ControllerPadrao
         switch ($sAction) {
             case 'insert':
                 return $this->processInsert();
-            case 'update':
-                return $this->processUpdate();
             case 'delete':
                 return $this->processDelete();
-            case 'insertLogin':
-                return $this->processInsertLogin();
-            case 'checkLogin':
-                return $this->processCheckLogin();
-                
         }
 
         return $this->processPage();
     }
 
-    
+
 
     protected function processInsert()
     {
     }
-    protected function processInsertLogin()
-    {
-    }
-
-    protected function processCheckLogin()
-    {
-    }
-
-    protected function processUpdate()
-    {
-    }
-
     protected function processDelete()
     {
     }

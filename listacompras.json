@@ -1,0 +1,14 @@
+[
+    {
+        "prodcodigo": "6603851801d00",
+        "prodnome": "prod1",
+        "prodpreco": "21.2",
+        "prodquantidade": "2"
+    },
+    {
+        "prodcodigo": "6603852796f2a",
+        "prodnome": "prod2",
+        "prodpreco": "22",
+        "prodquantidade": "222"
+    }
+]

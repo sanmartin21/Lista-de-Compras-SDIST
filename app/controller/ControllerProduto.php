@@ -6,24 +6,19 @@ use App\Controller\ControllerPadrao;
 use App\View\ViewProduto;
 use App\Model\ModelProduto;
 
-use App\Db\Connection;
-
 class ControllerProduto extends ControllerPadrao
 {
     function processPage()
     {
-        //var_dump(Connection::get());
-        
         $oModelProduto = new ModelProduto;
-
         $a = $oModelProduto->getAll();
-       //var_dump($a);
-        
-        $sTitle = 'PRODUCT';
+        $total = ModelProduto::calculateTotalForAllProducts($a);
+
+        $sTitle = 'Lista de Compras';
 
         $sContent = ViewProduto::render([
             'produtoContent' => "<h1>$sTitle</h1>",
-            'tabelaProduto' => ViewProduto::getHtmlTabelaProduto($a)
+            'tabelaProduto' => ViewProduto::getHtmlTabelaProduto($a, $total)
         ]);
 
         return parent::getPage(
@@ -32,28 +27,27 @@ class ControllerProduto extends ControllerPadrao
         );
     }
 
-    function processDelete(){
-        $iId = $_GET['prodcodigo'] ??= '';
+    function processDelete()
+    {
+        $iId = $_GET['prodcodigo'] ?? '';
 
         $oModelProduto = new ModelProduto;
         $oModelProduto->id = $iId;
-        
 
-        if($oModelProduto->deleteProduto()){
+        if ($oModelProduto->deleteProduto()) {
             $this->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Produto Excluído com Sucesso!
               </div>
               '
             ];
-        }else{
+        } else {
             $this->footerVars = [
                 'footerContent' => '<div class="alert alert-success" role="alert">
                 Erro! Produto não foi excluído!'
             ];
         }
 
-        return $this-> processPage();
+        return $this->processPage();
     }
-   
 }
